@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Allow: /images/
+Disallow: /admin
+Disallow: /login
+Sitemap: https://lazizbakery.com/sitemap.xml
