@@ -1,236 +1,183 @@
-import {
-  motion,
-  useScroll,
-  useTransform,
-  Variants,
-  useReducedMotion,
-} from "framer-motion";
-import { useEffect, useState, useRef } from "react";
+import React from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { ChevronRight, Quote, Heart, Award, Globe } from 'lucide-react';
+import { ImageWithFallback } from '@/components/ImageWithFallback';
+import { Link } from 'react-router-dom';
 
-/* ================= UTIL ================= */
-
-function useIsMobile() {
-  const [isMobile, setIsMobile] = useState(false);
-  useEffect(() => {
-    const check = () => setIsMobile(window.innerWidth < 768);
-    check();
-    window.addEventListener("resize", check);
-    return () => window.removeEventListener("resize", check);
-  }, []);
-  return isMobile;
-}
-
-/* ================= MOTION SYSTEM ================= */
-
-const luxuryEase: [number, number, number, number] = [0.16, 1, 0.3, 1];
-
-const container: Variants = {
-  hidden: { opacity: 0 },
-  visible: {
-    opacity: 1,
-    transition: { staggerChildren: 0.12, delayChildren: 0.16 },
-  },
-};
-
-const fadeUp = (isMobile: boolean): Variants => ({
-  hidden: { opacity: 0, y: isMobile ? 24 : 48 },
-  visible: {
-    opacity: 1,
-    y: 0,
-    transition: { duration: isMobile ? 0.7 : 1.1, ease: luxuryEase },
-  },
-});
-
-/* ================= PAGE ================= */
-
-export default function About() {
-  const isMobile = useIsMobile();
-  const reduceMotion = useReducedMotion();
-
-  const heroRef = useRef<HTMLDivElement>(null);
-  const { scrollYProgress } = useScroll({
-    target: heroRef,
-    offset: ["start start", "end start"],
-  });
-
-  const headlineY = useTransform(
-    scrollYProgress,
-    [0, 1],
-    reduceMotion ? [0, 0] : [0, isMobile ? 20 : 80]
-  );
-
-  const letterSpacing = useTransform(
-    scrollYProgress,
-    [0, 1],
-    isMobile || reduceMotion ? ["-0.01em", "-0.01em"] : ["-0.02em", "0.06em"]
-  );
+const About = () => {
+  const { scrollYProgress } = useScroll();
+  const yRange = useTransform(scrollYProgress, [0, 1], [0, -100]);
 
   return (
-    // Background changed to warm Alabaster/Cream
-    <main className="relative bg-[#FCF9F1] text-stone-900 overflow-x-hidden">
-      <div className="pointer-events-none absolute inset-0 z-0 opacity-[0.05] bg-[url('/grain.png')]" />
+    <div className="min-h-screen bg-[#FBF8F3] overflow-hidden">
+      
+      {/* --- EDITORIAL HERO SECTION --- */}
+      <section className="relative h-[90vh] flex items-center justify-center pt-20">
+        <div className="absolute inset-0 z-0">
+          <ImageWithFallback
+            src="https://images.unsplash.com/photo-1556250438-1ba2507e9edb?auto=format&fit=crop&q=80"
+            alt="The Artisan Hand"
+            className="w-full h-full object-cover grayscale-[0.3] brightness-50"
+          />
+          <div className="absolute inset-0 bg-gradient-to-b from-[#330E09]/40 to-[#FBF8F3]" />
+        </div>
 
-      {/* ================= HERO ================= */}
-      <section
-        ref={heroRef}
-        className="relative z-10 pt-44 pb-48 px-[8%] md:px-[10%]"
-      >
-        <motion.div variants={container} initial="hidden" animate="visible">
-          <motion.span
-            variants={fadeUp(isMobile)}
-            // Changed violet-600 to amber-600
-            className="block text-amber-600 font-black tracking-[0.45em] uppercase text-[11px] mb-10"
+        <div className="relative z-10 text-center px-6 max-w-5xl">
+          <motion.span 
+            initial={{ opacity: 0, tracking: '0.1em' }}
+            animate={{ opacity: 1, tracking: '0.5em' }}
+            transition={{ duration: 1 }}
+            className="block text-[#D4A574] uppercase text-xs sm:text-sm mb-6 font-light tracking-[0.5em]"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
-            About Us
+            The Heritage of Laziz
           </motion.span>
-
-          <motion.h1
-            style={{ y: headlineY, letterSpacing }}
-            className="text-[clamp(3.2rem,8vw,8.5rem)] font-black leading-[0.82] mb-12 tracking-tighter"
+          <motion.h1 
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 1, delay: 0.3 }}
+            className="text-6xl sm:text-8xl md:text-9xl text-white font-serif leading-tight mb-8"
+            style={{ fontFamily: "'Playfair Display', serif" }}
           >
-            World-Class Goods.
-            <br />
-            {/* Changed italic text to amber-600 */}
-            <span className="italic text-amber-600 font-serif font-light">
-            World-Class Delivery.
-            </span>
+            A Legacy of <br />
+            <span className="italic font-light text-[#F4E4C1]">Pure Devotion.</span>
           </motion.h1>
-
-          <motion.p
-            variants={fadeUp(isMobile)}
-            className="max-w-3xl text-xl text-stone-600 leading-relaxed font-light"
-          >
-            Headquartered in Alexandria, <b className="text-stone-900">Laziz Bakery</b> operates as a premier wholesale 
-            distributor and global importer, engineered to provide East Coast enterprises 
-            with a non-interrupted conduit to world-class manufacturing. Utilizing our 
-            strategically positioned logistical hubs in Virginia and Maryland, we 
-            effectively eliminate the complexities of international trade.
-          </motion.p>
-        </motion.div>
+        </div>
       </section>
 
-      {/* ================= HERITAGE ================= */}
-<section className="relative z-10 px-[8%] md:px-[10%] pb-40">
-  <motion.div variants={container} initial="hidden" whileInView="visible">
-    <motion.h2
-      variants={fadeUp(isMobile)}
-      // Changed violet-500 to amber-700 for a more "legacy/bronze" feel
-      className="text-5xl text-amber-700 font-bold tracking-tighter mb-6"
-    >
-      A Legacy of Global Access
-    </motion.h2>
-
-    <motion.p
-      variants={fadeUp(isMobile)}
-      className="max-w-3xl text-lg text-stone-600 leading-relaxed"
-    >
-      Built upon a foundation of operational transparency and cross-border expertise, 
-      Laziz Bakery serves as a vital artery for international commerce. We do not simply 
-      move goods; we curate resilient supply chains. By securing exclusive partnerships 
-      with world-class manufacturers across Europe and Asia, we maintain a disciplined 
-      portfolio.
-    </motion.p>
-  </motion.div>
-</section>
-
-      {/* ================= WHY PARTNER ================= */}
-<section className="relative z-10 px-[8%] md:px-[10%] pb-40">
-  <motion.div variants={container} initial="hidden" whileInView="visible">
-    <motion.h2
-      variants={fadeUp(isMobile)}
-      className="text-5xl text-amber-700 font-bold tracking-tighter mb-6"
-    >
-      The Strategic Advantage
-    </motion.h2>
-
-    <motion.p
-      variants={fadeUp(isMobile)}
-      className="max-w-3xl text-lg text-stone-600 leading-relaxed"
-    >
-      As the primary gateway for high-demand Mediterranean and Middle Eastern staples 
-      on the East Coast, we bridge the gap between world-class manufacturing and the 
-      American retail landscape. Our hubs in Alexandria and Clarksburg serve as the tactical core of our 
-      distribution network.
-    </motion.p>
-
-    <motion.p
-      variants={fadeUp(isMobile)}
-      className="max-w-3xl mt-6 text-lg text-stone-600 leading-relaxed"
-    >
-      At Laziz Bakery, we operate with a <span className="italic text-amber-900 font-medium font-serif">Zero-Loss Integrity</span> approach. 
-      Partnering with us means gaining direct access to a curated master inventory, 
-      backed by the personalized oversight of a master distributor.
-    </motion.p>
-  </motion.div>
-</section>
-
-      {/* ================= LOCATIONS ================= */}
-      <section className="relative z-10 px-[8%] md:px-[10%] pb-48">
-        <motion.div variants={container} initial="hidden" whileInView="visible">
-          <div className="h-px w-full bg-amber-200 mb-20" />
-          
-          <motion.h2
-            variants={fadeUp(isMobile)}
-            className="text-5xl text-amber-700 font-bold tracking-tighter mb-10"
+      {/* --- THE MANIFESTO (Editorial Text Block) --- */}
+      <section className="relative py-32 px-6">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-16 items-center">
+          <motion.div 
+            initial={{ opacity: 0, x: -50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="lg:col-span-5"
           >
-            Our Locations & Operations
-          </motion.h2>
-
-          <motion.div
-            variants={fadeUp(isMobile)}
-            className="grid md:grid-cols-2 gap-12 text-lg text-stone-600"
-          >
-            <div className="p-8 bg-white/40 border border-amber-100 rounded-2xl backdrop-blur-sm hover:border-amber-400 transition-colors duration-500">
-              <strong className="text-amber-800 font-bold uppercase text-xs tracking-widest block mb-4">
-                Logistics Center
-              </strong>
-              <p className="text-stone-900 font-medium">6304 Gravel Ave, Ste G-H,</p>
-              <p>Alexandria, VA 22310</p>
-            </div>
-
-            <div className="p-8 bg-white/40 border border-amber-100 rounded-2xl backdrop-blur-sm hover:border-amber-400 transition-colors duration-500">
-              <strong className="text-amber-800 font-bold uppercase text-xs tracking-widest block mb-4">
-                Regional Office
-              </strong>
-              <p className="text-stone-900 font-medium">11808 Piedmont Road,</p>
-              <p>Clarksburg, MD 20871</p>
-            </div>
-
-            <div className="p-8 bg-white/40 border border-amber-100 rounded-2xl backdrop-blur-sm hover:border-amber-400 transition-colors duration-500">
-              <strong className="text-amber-800 font-bold uppercase text-xs tracking-widest block mb-4">
-                Operating Hours
-              </strong>
-              <p className="text-stone-900 font-medium">Mon–Sat</p>
-              <p>9:00 AM – 6:00 PM</p>
-            </div>
-
-            <div className="p-8 bg-amber-600 text-white rounded-2xl shadow-xl shadow-amber-900/10">
-              <strong className="text-amber-100 font-bold uppercase text-xs tracking-widest block mb-4">
-                Direct Contact
-              </strong>
-              <p className="text-xl font-bold">+1 301-305-8748</p>
-              <p className="opacity-90">Ali@lazizbakery.Com</p>
-            </div>
-
+            <h2 className="text-[#330E09] text-4xl sm:text-5xl font-serif mb-8 leading-snug" style={{ fontFamily: "'Didot', serif" }}>
+              Where Middle Eastern <br /> Soul Meets <br /> European Finesse.
+            </h2>
+            <div className="w-20 h-1 bg-[#D4A574] mb-8" />
           </motion.div>
-        </motion.div>
+
+          <motion.div 
+            initial={{ opacity: 0, x: 50 }}
+            whileInView={{ opacity: 1, x: 0 }}
+            className="lg:col-span-7 space-y-6 text-xl text-[#8B7355] font-light leading-relaxed"
+            style={{ fontFamily: "'Montserrat', sans-serif" }}
+          >
+            <p>
+              Founded with a singular vision, <span className="text-[#330E09] font-normal italic">Laziz Bakery</span> is more than an atelier; it is a celebration of time-honored traditions. Our story began with a passion for blending the aromatic, soulful baking of the Middle East with the precise, elegant techniques of European pastry arts.
+            </p>
+            <p>
+              As a family-owned sanctuary in Springfield, VA, we believe that luxury is found in the details—the precise fold of a croissant, the velvet crumb of a custom cake, and the warmth of a greeting.
+            </p>
+          </motion.div>
+        </div>
       </section>
 
-      {/* ================= CLOSING ================= */}
-      <section className="relative z-10 px-[8%] md:px-[10%] pb-32">
-        <motion.p
-          initial={{ opacity: 0, y: 40 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1.2, ease: luxuryEase }}
-          className="max-w-4xl text-5xl md:text-6xl font-black tracking-tighter"
-        >
-          Connecting Global Quality To Local Businesses,
-          <br />
-          <span className="italic text-amber-600 font-serif font-light">
-            One Direct Delivery At a Time.
-          </span>
-        </motion.p>
+      {/* --- THE ARTISAN PHILOSOPHY (Visual Spread) --- */}
+      <section className="bg-[#330E09] py-32 text-white overflow-hidden">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-20 items-center">
+            
+            <div className="relative">
+              <motion.div 
+                style={{ y: yRange }}
+                className="relative z-10 rounded-2xl overflow-hidden border border-white/10 shadow-2xl"
+              >
+                <ImageWithFallback
+                  src="https://images.unsplash.com/photo-1486427944299-d1955d23e34d?auto=format&fit=crop&q=80"
+                  alt="Quality Ingredients"
+                  className="w-full h-[600px] object-cover"
+                />
+              </motion.div>
+              {/* Decorative Floating Card */}
+              <motion.div 
+                initial={{ x: 100, opacity: 0 }}
+                whileInView={{ x: 0, opacity: 1 }}
+                className="absolute -right-8 -bottom-8 bg-[#D4A574] p-10 hidden md:block max-w-xs rounded-xl"
+              >
+                <Quote className="text-white/40 mb-4" size={32} />
+                <p className="font-serif italic text-xl">"Every bite tells a story of quality, authenticity, and love."</p>
+              </motion.div>
+            </div>
+
+            <div className="space-y-12">
+              <div className="flex gap-6">
+                <Globe className="text-[#D4A574] shrink-0" size={32} />
+                <div>
+                  <h4 className="text-2xl font-serif mb-2 italic">Global Inspiration</h4>
+                  <p className="text-white/60 font-light">Sourcing the finest vanilla from Madagascar and artisanal flours to honor our dual heritage.</p>
+                </div>
+              </div>
+              <div className="flex gap-6">
+                <Heart className="text-[#D4A574] shrink-0" size={32} />
+                <div>
+                  <h4 className="text-2xl font-serif mb-2 italic">Handcrafted Daily</h4>
+                  <p className="text-white/60 font-light">No shortcuts. No compromises. We rise with the sun to ensure every pastry is at its peak of freshness.</p>
+                </div>
+              </div>
+              <div className="flex gap-6">
+                <Award className="text-[#D4A574] shrink-0" size={32} />
+                <div>
+                  <h4 className="text-2xl font-serif mb-2 italic">Family Values</h4>
+                  <p className="text-white/60 font-light">We take pride in creating more than just baked goods—we create the centerpieces for your memories.</p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
       </section>
-    </main>
+
+      {/* --- VALUES GRID (Modern Editorial) --- */}
+      <section className="py-32 px-6">
+        <div className="max-w-7xl mx-auto text-center mb-20">
+          <h2 className="text-5xl font-serif text-[#330E09]" style={{ fontFamily: "'Playfair Display', serif" }}>Our Core Intentions</h2>
+        </div>
+        
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-1px bg-[#D4A574]/20 border border-[#D4A574]/20">
+          {[
+            { title: 'Fresh Ingredients', desc: 'Locally sourced seasonal fruits and premium imports.' },
+            { title: 'Traditional Methods', desc: 'Honoring time-honored techniques passed through generations.' },
+            { title: 'Warm Welcome', desc: 'A commitment to every customer who walks through our doors.' }
+          ].map((item, idx) => (
+            <div key={idx} className="bg-[#FBF8F3] p-16 text-center hover:bg-white transition-colors group">
+              <span className="text-[#D4A574] text-sm tracking-widest block mb-6">0{idx + 1}</span>
+              <h3 className="text-2xl font-serif text-[#330E09] mb-4">{item.title}</h3>
+              <p className="text-[#8B7355] font-light leading-relaxed">{item.desc}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* --- THE INVITATION --- */}
+      <section className="py-32 bg-[#FAF3EA] border-y border-[#D4A574]/10">
+        <div className="max-w-4xl mx-auto text-center px-6">
+          <h3 className="text-4xl sm:text-5xl font-serif text-[#330E09] mb-10 italic">Experience the Laziz Standard.</h3>
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-6">
+            <Link
+              to="/cakes"
+              className="px-10 py-5 bg-[#330E09] text-white rounded-full flex items-center gap-3 hover:scale-105 transition-all shadow-xl"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
+              <span>Explore the Gallery</span>
+              <ChevronRight size={18} />
+            </Link>
+            <Link
+              to="/catering"
+              className="px-10 py-5 border border-[#330E09] text-[#330E09] rounded-full flex items-center gap-3 hover:bg-[#330E09] hover:text-white transition-all"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
+            >
+              <span>Our Catering Services</span>
+              <ChevronRight size={18} />
+            </Link>
+          </div>
+        </div>
+      </section>
+
+    </div>
   );
-}
+};
+
+export default About;
