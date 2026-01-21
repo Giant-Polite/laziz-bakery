@@ -288,7 +288,7 @@ export default function App() {
 
           {/* Bottom Row - Wide Feature */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div className="lg:col-span-8 lg:col-start-3 group cursor-pointer" onClick={() => openModal("Daily Pastry Selection", "Daily Pastry Selection, Fresh from our ovens to your table", "/images/Pastries/laziz-cream-roll.jpeg")}>
+            <div className="lg:col-span-8 lg:col-start-3 group cursor-pointer" onClick={() => openModal("Laziz Cream Roll", "Daily Pastry Selection, Fresh from our ovens to your table", "/images/Pastries/laziz-cream-roll.jpeg")}>
               <div className="relative overflow-hidden rounded-3xl shadow-lg h-[400px] lg:h-[450px]">
                 <ImageWithFallback
                   src="/images/Pastries/laziz-cream-roll.jpeg" 
@@ -298,7 +298,7 @@ export default function App() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8 text-white text-center">
                   <h4 className="text-3xl sm:text-4xl mb-2 text-[#C49E6C]">
-                    Cream Roll
+                    Laziz Cream Roll
                   </h4>
                   <p className="text-lg text-white/90">
                     Daily Pastry Selection, Fresh from our ovens to your table

@@ -11,6 +11,7 @@ const Navbar = () => {
         <div className="flex items-center justify-between h-20">
 
           {/* ================= BRAND ================= */}
+          <Link to="/" className="group cursor-pointer hover:opacity-90 transition-opacity">
           <div className="flex flex-col leading-none select-none">
             <span
               className="text-2xl sm:text-3xl lg:text-4xl font-serif font-semibold tracking-[0.14em] text-[#330E09]"
@@ -27,6 +28,7 @@ const Navbar = () => {
             </span>
 
           </div>
+          </Link>
 
           {/* ================= DESKTOP NAV ================= */}
           <nav className="hidden md:flex items-center space-x-8">
