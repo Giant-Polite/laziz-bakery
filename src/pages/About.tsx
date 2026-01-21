@@ -24,10 +24,10 @@ const About = () => {
 
         <div className="relative z-10 text-center px-6 max-w-5xl">
           <motion.span 
-            initial={{ opacity: 0, tracking: '0.1em' }}
-            animate={{ opacity: 1, tracking: '0.5em' }}
+            initial={{ opacity: 0, letterSpacing: '0.1em' }} // Changed 'tracking' to 'letterSpacing'
+            animate={{ opacity: 1, letterSpacing: '0.5em' }} // Changed 'tracking' to 'letterSpacing'
             transition={{ duration: 1 }}
-            className="block text-[#D4A574] uppercase text-xs sm:text-sm mb-6 font-light tracking-[0.5em]"
+            className="block text-[#D4A574] uppercase text-xs sm:text-sm mb-6 font-light"
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             The Heritage of Laziz
@@ -66,7 +66,7 @@ const About = () => {
             style={{ fontFamily: "'Montserrat', sans-serif" }}
           >
             <p>
-              Founded with a singular vision, <span className="text-[#330E09] font-normal italic">Laziz Bakery</span> is more than an atelier; it is a celebration of time-honored traditions. Our story began with a passion for blending the aromatic, soulful baking of the Middle East with the precise, elegant techniques of European pastry arts.
+              Founded with a singular vision, <span className="text-[#330E09] font-normal italic">Laziz Bakery</span> is more than an bakery; it is a celebration of time-honored traditions. Our story began with a passion for blending the aromatic, soulful baking of the Middle East with the precise, elegant techniques of European pastry arts.
             </p>
             <p>
               As a family-owned sanctuary in Springfield, VA, we believe that luxury is found in the details—the precise fold of a croissant, the velvet crumb of a custom cake, and the warmth of a greeting.
@@ -95,7 +95,7 @@ const About = () => {
               <motion.div 
                 initial={{ x: 100, opacity: 0 }}
                 whileInView={{ x: 0, opacity: 1 }}
-                className="absolute -right-8 -bottom-8 bg-[#D4A574] p-10 hidden md:block max-w-xs rounded-xl"
+                className="absolute -right-16 -bottom-18 bg-[#D4A574] p-4 hidden md:block max-w-xs rounded-xl"
               >
                 <Quote className="text-white/40 mb-4" size={32} />
                 <p className="font-serif italic text-xl">"Every bite tells a story of quality, authenticity, and love."</p>
@@ -161,7 +161,7 @@ const About = () => {
               className="px-10 py-5 bg-[#330E09] text-white rounded-full flex items-center gap-3 hover:scale-105 transition-all shadow-xl"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              <span>Explore the Gallery</span>
+              <span>Explore Our Cakes</span>
               <ChevronRight size={18} />
             </Link>
             <Link
