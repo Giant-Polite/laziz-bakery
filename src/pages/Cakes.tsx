@@ -125,10 +125,11 @@ function CategoryNav({ activeCategory, onCategoryChange }: { activeCategory: str
     { key: 'all', label: 'All' },
     { key: 'Wedding', label: 'Wedding' },
     { key: 'Birthday', label: 'Birthday' },
-    { key: 'Baby', label: 'Baby' },
-    { key: 'Pastries', label: 'Pastries' },
-    { key: 'Custom', label: 'Custom' },
+    { key: 'Baby', label: 'Baby Showers' },
     { key: 'Anniversary', label: 'Anniversary' },
+    { key: 'Custom', label: 'Custom' },
+    { key: 'Pastries', label: 'Pastries' },
+    
   ];
 
   return (
