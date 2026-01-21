@@ -32,7 +32,8 @@ const Footer = () => {
             <ul className="space-y-4 text-sm">
               {[
                 { name: "Home", path: "/" },
-                { name: "Our Cakes", path: "/our-cakes" },
+                { name: "Basir Azizi Cookies", path: "/cookies" },
+                { name: "Asal Cakes", path: "/cakes" },
                 { name: "About", path: "/about" },
                 { name: "Catering", path: "/catering" },
               ].map((link) => (

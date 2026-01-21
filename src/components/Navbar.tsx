@@ -34,7 +34,8 @@ const Navbar = () => {
           <nav className="hidden md:flex items-center space-x-8">
             {[
               { label: "Home", to: "/" },  // Change href to to for React Router
-              { label: "Our Cakes", to: "/cakes" },
+              { label: "Basir Azizi Cookies", to: "/cookies" },
+              { label: "Asal Cakes", to: "/cakes" },
               { label: "About", to: "/about" },
               { label: "Catering", to: "/catering" },
             ].map((item) => (
@@ -75,7 +76,8 @@ const Navbar = () => {
             <nav className="flex flex-col space-y-4">
               {[
                 { label: "Home", to: "/" },  // Change href to to for React Router
-                { label: "Our Cakes", to: "/cakes" },
+                { label: "Basir Azizi Cookies", to: "/cookies" },
+                { label: "Asal Cakes", to: "/cakes" },
                 { label: "About", to: "/about" },
                 { label: "Catering", to: "/catering" },
               ].map((item) => (

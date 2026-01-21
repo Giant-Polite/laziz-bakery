@@ -451,15 +451,17 @@ const About = () => {
                 </div>
               </div>
 
-              <div className="space-y-6 text-lg text-[#6B5D52] font-light leading-relaxed mb-12">
-                <p>
-                  From our signature <span className="text-[#2D1810] font-normal italic">Rose & Pistachio Croissants</span> to our opulent <span className="text-[#2D1810] font-normal italic">24-Karat Gold-Dusted Wedding Cakes</span>, each creation is a testament to our relentless pursuit of perfection.
-                </p>
-                <p>
-                  We believe luxury is an experience—one that begins the moment you step into our boutique and continues with every exquisite bite.
-                </p>
-              </div>
-
+             <div className="space-y-6 text-lg text-[#6B5D52] font-light leading-relaxed mb-12">
+              <p>
+                At Laziz, Perfection knows <span className="text-[#2D1810] font-normal italic"> No Borders </span> . We blend our own 
+                <span className="text-[#2D1810] font-normal italic"> Artisanal Craftsmanship </span> 
+                with a premier selection of imported delicacies sourced from the world’s finest confectionaries.
+              </p>
+              <p>
+                Whether meticulously baked in-house or flown in from the world's culinary capitals, 
+                our inventory represents the absolute zenith of global pastry design.
+              </p>
+            </div>
               {/* Stats */}
               <div className="grid grid-cols-3 gap-8 pt-12 border-t border-[#D4AF6A]/20">
                 <div>

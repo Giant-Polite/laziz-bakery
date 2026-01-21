@@ -6,6 +6,7 @@ import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Cakes from "./pages/Cakes";
+import Cookies from "./pages/Cookies";
 import Catering from "./pages/Catering";
 import NotFound from "./pages/NotFound";
 import { useEffect } from "react";
@@ -31,6 +32,7 @@ const App = () => (
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
             <Route path="cakes" element={<Cakes />} />
+            <Route path="cookies" element={<Cookies />} />
             <Route path="catering" element={<Catering />} />
           </Route>
           <Route path="*" element={<NotFound />} />

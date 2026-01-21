@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Phone, X, MapPin, Sparkles } from 'lucide-react';
-import { cakesData } from '../data/cakesData'; 
+import { cookiesData } from '../data/cookiesData'; 
 
 // --- ULTRA LUXURY HERO SECTION ---
 function Hero() {
@@ -15,8 +15,8 @@ function Hero() {
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
   const y = useTransform(scrollYProgress, [0, 0.5], [0, -50]);
 
-  const titleWords = ['Asal', 'Cakes'];
-  const subtitle = 'We are honored to welcome the exquisite artistry of Asal Cakes to our collection.';
+  const titleWords = ['Basir', 'Azizi', 'Cookies', 'and', 'Pastries'];
+  const subtitle = 'We are thrilled to bring the complete Basir Azizi Canada inventory to our discerning clientele.';
 
   return (
     <motion.section
@@ -116,48 +116,6 @@ function Hero() {
         style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6z' fill='%23000000'/%3E%3C/svg%3E")` }}
       />
     </motion.section>
-  );
-}
-
-// --- STYLISTIC CATEGORY NAV ---
-function CategoryNav({ activeCategory, onCategoryChange }: { activeCategory: string; onCategoryChange: (category: string) => void; }) {
-  const categories = [
-    { key: 'all', label: 'All' },
-    { key: 'Wedding', label: 'Wedding' },
-    { key: 'Birthday', label: 'Birthday' },
-    { key: 'Baby', label: 'Baby Showers' },
-    { key: 'Anniversary', label: 'Anniversary' },
-    { key: 'Custom', label: 'Custom' },    
-  ];
-
-  return (
-    <motion.nav
-      initial={{ opacity: 0, y: -30 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, delay: 0.2 }}
-      className="relative z-40 bg-white/95 backdrop-blur-xl border-b border-[#E8DDD0]/50 py-5 px-6 md:px-12 shadow-sm"
-    >
-      <div className="max-w-7xl mx-auto relative">
-        <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }} className="absolute -top-5 left-1/2 -translate-x-1/2 w-32 h-[1px] bg-[#C9A875]" />
-        <div className="flex items-center justify-center gap-1 md:gap-3 flex-wrap">
-          {categories.map((category) => (
-            <motion.button
-              key={category.key}
-              onClick={() => onCategoryChange(category.key)}
-              className="relative group px-4 py-2"
-              whileHover={{ scale: 1.02 }}
-            >
-              {activeCategory === category.key && (
-                <motion.div layoutId="navBg" className="absolute inset-0 bg-[#F5EFE7] rounded-md" />
-              )}
-              <span className={`relative z-10 text-[10px] md:text-xs tracking-[0.2em] uppercase ${activeCategory === category.key ? 'text-[#8B7355]' : 'text-[#C4B5A0]'}`} style={{ fontFamily: "'Cinzel', serif" }}>
-                {category.label}
-              </span>
-            </motion.button>
-          ))}
-        </div>
-      </div>
-    </motion.nav>
   );
 }
 
@@ -405,19 +363,19 @@ function ClosingCTA() {
 }
 
 
-// --- MODAL & PAGE ---
-const CakeModal = ({ cake, onClose }: any) => {
-  if (!cake) return null;
+// --- Modall & PAGE ---
+const CookieModall = ({ cookie, onClose }: any) => {
+  if (!cookie) return null;
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} className="absolute inset-0 bg-[#3D3027]/90 backdrop-blur-sm" />
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="relative w-full max-w-5xl bg-white flex flex-col md:flex-row shadow-2xl overflow-hidden max-h-[90vh]">
         <button onClick={onClose} className="absolute top-4 right-4 z-10 p-2 text-gray-400 hover:text-black"><X size={24}/></button>
-        <div className="w-full md:w-1/2 h-64 md:h-auto"><img src={cake.image} className="w-full h-full object-cover" /></div>
+        <div className="w-full md:w-1/2 h-64 md:h-auto"><img src={cookie.image} className="w-full h-full object-cover" /></div>
         <div className="w-full md:w-1/2 p-10 flex flex-col justify-center">
-          <span className="text-[10px] tracking-[0.5em] text-[#C9A875] mb-4 font-serif">{cake.category}</span>
-          <h2 className="text-4xl italic font-serif mb-6 text-[#3D3027]">{cake.name}</h2>
-          <p className="text-gray-500 italic text-xl mb-12 font-serif">{cake.descriptor}</p>
+          <span className="text-[10px] tracking-[0.5em] text-[#C9A875] mb-4 font-serif">{cookie.category}</span>
+          <h2 className="text-4xl italic font-serif mb-6 text-[#3D3027]">{cookie.name}</h2>
+          <p className="text-gray-500 italic text-xl mb-12 font-serif">{cookie.descriptor}</p>
           <div className="pt-8 border-t border-gray-100">
              <motion.a href="tel:+17036515000" className="w-full block py-4 bg-[#3D3027] text-white text-center uppercase text-[10px] tracking-[0.4em] font-serif hover:bg-[#C9A875] transition-colors">Inquire Now</motion.a>
           </div>
@@ -427,37 +385,36 @@ const CakeModal = ({ cake, onClose }: any) => {
   );
 };
 
-const Cakes = () => {
+const Cookies = () => {
   const [activeCategory, setActiveCategory] = useState('all');
-  const [selectedCake, setSelectedCake] = useState<any>(null);
+  const [selectedcookie, setSelectedcookie] = useState<any>(null);
 
-  const displayCakes = (activeCategory === 'all' 
-    ? cakesData.all 
-    : cakesData.all.filter(cake => cake.category === activeCategory)
+  const displaycookies = (activeCategory === 'all' 
+    ? cookiesData.all 
+    : cookiesData.all.filter(cookie => cookie.category === activeCategory)
   ).sort((a, b) => a.id - b.id);
 
   return (
     <div className="min-h-screen bg-[#FAF8F5]">
       <Hero />
-      <CategoryNav activeCategory={activeCategory} onCategoryChange={setActiveCategory} />
       <div className="max-w-7xl mx-auto px-6 py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
         <AnimatePresence mode="popLayout">
-          {displayCakes.map((cake) => (
-            <motion.div layout key={cake.id} onClick={() => setSelectedCake(cake)} className="group cursor-pointer">
+          {displaycookies.map((cookie) => (
+            <motion.div layout key={cookie.id} onClick={() => setSelectedcookie(cookie)} className="group cursor-pointer">
               <div className="relative aspect-[4/5] overflow-hidden mb-6 bg-[#F9F6F2]">
-                <img src={cake.image} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" />
+                <img src={cookie.image} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" />
               </div>
-              <h3 className="text-2xl text-[#3D3027] italic font-serif text-center">{cake.name}</h3>
+              <h3 className="text-2xl text-[#3D3027] italic font-serif text-center">{cookie.name}</h3>
             </motion.div>
           ))}
         </AnimatePresence>
       </div>
       <ClosingCTA />
       <AnimatePresence>
-        {selectedCake && <CakeModal cake={selectedCake} onClose={() => setSelectedCake(null)} />}
+        {selectedcookie && <CookieModall cookie={selectedcookie} onClose={() => setSelectedcookie(null)} />}
       </AnimatePresence>
     </div>
   );
 };
 
-export default Cakes;
+export default Cookies;

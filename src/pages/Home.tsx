@@ -54,8 +54,10 @@ export default function App() {
   return (
     <div className="min-h-screen bg-[#FBF8F3]">
 
-      {/* Hero Section */}
-      <section id="home" className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden pt-28">
+      <section 
+  id="home" 
+  className="relative h-screen min-h-[600px] md:min-h-screen flex items-center justify-center overflow-hidden pt-20 md:pt-12"
+>
         {/* Layered Background Treatment */}
         <div className="absolute inset-0">
           {/* Base Image */}
@@ -288,7 +290,7 @@ export default function App() {
 
           {/* Bottom Row - Wide Feature */}
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-            <div className="lg:col-span-8 lg:col-start-3 group cursor-pointer" onClick={() => openModal("Laziz Cream Roll", "Daily Pastry Selection, Fresh from our ovens to your table", "/images/Pastries/laziz-cream-roll.jpeg")}>
+            <div className="lg:col-span-8 lg:col-start-3 group cursor-pointer" onClick={() => openModal("Basir Azizi Cream Roll", "Daily Pastry Selection, Fresh from our ovens to your table", "/images/Pastries/laziz-cream-roll.jpeg")}>
               <div className="relative overflow-hidden rounded-3xl shadow-lg h-[400px] lg:h-[450px]">
                 <ImageWithFallback
                   src="/images/Pastries/laziz-cream-roll.jpeg" 
@@ -298,10 +300,10 @@ export default function App() {
                 <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
                 <div className="absolute bottom-0 left-0 right-0 p-8 text-white text-center">
                   <h4 className="text-3xl sm:text-4xl mb-2 text-[#C49E6C]">
-                    Laziz Cream Roll
+                    Basir Azizi Cream Roll
                   </h4>
                   <p className="text-lg text-white/90">
-                    Daily Pastry Selection, Fresh from our ovens to your table
+                    We are thrilled to bring the complete Basir Azizi Canada inventory to our discerning clientele.
                   </p>
                 </div>
               </div>
@@ -339,8 +341,8 @@ export default function App() {
             <div className="order-2 lg:order-1">
               <div className="relative rounded-2xl overflow-hidden shadow-2xl">
                 <ImageWithFallback
-                  src="https://images.unsplash.com/photo-1556250438-1ba2507e9edb?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxiYWtlcnklMjBjaGVmJTIwaGFuZHN8ZW58MXx8fHwxNzY4OTIwMjY0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                  alt="Baking with care"
+                  src="/Traditional_Afghan.png"
+                  alt="Traditional Afghan"
                   className="w-full h-[500px] object-cover"
                 />
               </div>

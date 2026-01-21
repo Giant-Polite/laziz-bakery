@@ -41,15 +41,5 @@ export const cakesData = {
     { id: 29, name: 'Wedding Emerald Gold 3-Tier', category: 'Wedding', image: '/images/wedding/wedding-emerald-gold-3tier.jpg', descriptor: 'Sophisticated emerald green and gold 3-tier wedding cake.' },
     { id: 30, name: 'Wedding Pearl Roses 2-Tier', category: 'Wedding', image: '/images/wedding/wedding-pearl-roses-2tier.jpg', descriptor: 'Elegant 2-tier wedding cake adorned with pearl and rose accents.' },
 
-    // --- PASTRIES (IDs 31+ so they show last) ---
-    { id: 32, name: 'Laziz4', category: 'Pastries', image: '/images/Pastries/Laziz4.jpeg', descriptor: 'A delightful pastry with a perfect golden crust.' },
-    { id: 33, name: 'Laziz6', category: 'Pastries', image: '/images/Pastries/Laziz6.jpeg', descriptor: 'Sweet and flaky, topped with rich cream filling.' },
-    { id: 34, name: 'Laziz7', category: 'Pastries', image: '/images/Pastries/Laziz7.jpeg', descriptor: 'Crispy and airy, perfect for any occasion.' },
-    { id: 35, name: 'Afghan Charcuterie Board', category: 'Pastries', image: '/images/Pastries/afghan-charcuterie-board.jpeg', descriptor: 'A rich and savory pastry assortment.' },
-    { id: 36, name: 'Laziz Azizi Simyan', category: 'Pastries', image: '/images/Pastries/laziz-azizi-simyan.jpeg', descriptor: 'Traditional Afghan dessert, sweet and fragrant.' },
-    { id: 37, name: 'Laziz Cream Roll', category: 'Pastries', image: '/images/Pastries/laziz-cream-roll.jpeg', descriptor: 'A creamy and light pastry roll, delicately sweet.' },
-    { id: 38, name: 'Laziz Strawberry Cookie', category: 'Pastries', image: '/images/Pastries/laziz-strawberry-cookie.jpeg', descriptor: 'Soft, chewy, and bursting with fresh strawberry flavor.' },
-    { id: 39, name: 'Laziz Waraqi', category: 'Pastries', image: '/images/Pastries/laziz-waraqi.jpeg', descriptor: 'Traditional pastry with a crisp outer layer and rich filling.' },
-    { id: 40, name: 'Laziz White Choco Cookie', category: 'Pastries', image: '/images/Pastries/laziz-white-choco-cookie.jpeg', descriptor: 'White chocolate cookies with a soft, gooey center.' },
-  ],
+    ],
 };
