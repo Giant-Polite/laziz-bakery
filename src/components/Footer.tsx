@@ -34,7 +34,7 @@ const Footer = () => {
                 { name: "Home", path: "/" },
                 { name: "Our Cakes", path: "/our-cakes" },
                 { name: "About", path: "/about" },
-                { name: "Contact", path: "/contact" },
+                { name: "Catering", path: "/catering" },
               ].map((link) => (
                 <li key={link.name}>
                   <NavLink
@@ -58,8 +58,8 @@ const Footer = () => {
               <div className="flex items-start gap-3">
                 <MapPin className="w-4 h-4 text-[#D4A574] mt-0.5" />
                 <span className="text-[#E6D8C5]/80">
-                  6304 Gravel Ave, Suite G<br />
-                  Alexandria, VA 22310
+                  7912 Yarnwood Ct<br />
+                  Springfield, VA 22153
                 </span>
               </div>
 

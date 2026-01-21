@@ -5,7 +5,8 @@ import { BrowserRouter, Routes, Route, useLocation } from "react-router-dom";
 import Layout from "./components/Layout";
 import Home from "./pages/Home";
 import About from "./pages/About";
-import Contact from "./pages/Contact";
+import Cakes from "./pages/Cakes";
+import Catering from "./pages/Catering";
 import NotFound from "./pages/NotFound";
 import { useEffect } from "react";
 
@@ -29,7 +30,8 @@ const App = () => (
           <Route path="/" element={<Layout />}>
             <Route index element={<Home />} />
             <Route path="about" element={<About />} />
-            <Route path="contact" element={<Contact />} />
+            <Route path="cakes" element={<Cakes />} />
+            <Route path="catering" element={<Catering />} />
           </Route>
           <Route path="*" element={<NotFound />} />
         </Routes>

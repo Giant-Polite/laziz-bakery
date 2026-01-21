@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { Menu, X, Phone } from "lucide-react";
+import { Link } from "react-router-dom"; // Import the Link component for navigation
 
 const Navbar = () => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -30,19 +31,18 @@ const Navbar = () => {
           {/* ================= DESKTOP NAV ================= */}
           <nav className="hidden md:flex items-center space-x-8">
             {[
-              { label: "Home", href: "#home" },
-              { label: "Our Cakes", href: "#cakes" },
-              { label: "About", href: "#about" },
-              { label: "Catering", href: "#catering" },
-              { label: "Contact", href: "#contact" },
+              { label: "Home", to: "/" },  // Change href to to for React Router
+              { label: "Our Cakes", to: "/cakes" },
+              { label: "About", to: "/about" },
+              { label: "Catering", to: "/catering" },
             ].map((item) => (
-              <a
+              <Link
                 key={item.label}
-                href={item.href}
+                to={item.to} // Use `to` with Link
                 className="text-[13px] uppercase tracking-widest text-[#5D4E37] transition-colors hover:text-[#8B4513]"
               >
                 {item.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -50,7 +50,7 @@ const Navbar = () => {
           <div className="hidden md:block">
             <a
               href="tel:+17036515000"
-              className="inline-flex items-center gap-2 px-6 py-3 bg-[#D4A574] text-white rounded-xl hover:bg-[#C4956A] transition-all shadow-md hover:shadow-lg"
+              className="inline-flex items-center gap-2 px-6 py-3 bg-[#800000] text-white rounded-xl hover:bg-[#600000] transition-all shadow-md hover:shadow-lg"
             >
               <Phone className="w-4 h-4" />
               <span className="text-sm tracking-wide">+1 (703) 651-5000</span>
@@ -72,28 +72,27 @@ const Navbar = () => {
           <div className="md:hidden pb-6 pt-4 border-t border-[#E8DCC8] mt-2">
             <nav className="flex flex-col space-y-4">
               {[
-                { label: "Home", href: "#home" },
-                { label: "Our Cakes", href: "#cakes" },
-                { label: "About", href: "#about" },
-                { label: "Catering", href: "#catering" },
-                { label: "Contact", href: "#contact" },
+                { label: "Home", to: "/" },  // Change href to to for React Router
+                { label: "Our Cakes", to: "/cakes" },
+                { label: "About", to: "/about" },
+                { label: "Catering", to: "/catering" },
               ].map((item) => (
-                <a
+                <Link
                   key={item.label}
-                  href={item.href}
+                  to={item.to}  // Use `to` with Link
                   onClick={() => setMobileMenuOpen(false)}
                   className="text-[#5D4E37] hover:text-[#8B4513] transition-colors py-2 text-sm tracking-wide"
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
 
               <a
-                href="tel:+17036515000"
-                className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#D4A574] text-white rounded-xl hover:bg-[#C4956A] transition-all shadow-md mt-4"
+              href="tel:+17036515000"
+              className="inline-flex items-center justify-center gap-2 px-6 py-3 bg-[#800000] text-white rounded-xl hover:bg-[#600000] transition-all shadow-md mt-4"
               >
-                <Phone className="w-4 h-4" />
-                <span className="text-sm tracking-wide">+1 (703) 651-5000</span>
+              <Phone className="w-4 h-4" />
+              <span className="text-sm tracking-wide">+1 (703) 651-5000</span>
               </a>
             </nav>
           </div>

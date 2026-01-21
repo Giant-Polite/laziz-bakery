@@ -1,12 +1,17 @@
 import { useState, useEffect } from 'react';
-import { Menu, X, Phone, MapPin, Mail, Facebook, Instagram, Twitter, ChevronRight } from 'lucide-react';
+import { Menu, X, Phone, MapPin, ChevronRight } from 'lucide-react';
 import { ImageWithFallback } from '@/components/ImageWithFallback';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom'; // Import the Link component
 import Navbar from "@/components/Navbar";
+import Modal from '@/components/Modal'; // Import the modal component
+
 
 export default function App() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [currentWord, setCurrentWord] = useState(0);
+  const [modalOpen, setModalOpen] = useState(false); // State to manage modal open/close
+  const [selectedCake, setSelectedCake] = useState({ name: '', description: '', imageUrl: ''  }); // Store cake details for modal
   
   const rotatingWords = ['Fresh', 'Artisan', 'Handcrafted', 'Delicious', 'Premium'];
 
@@ -16,6 +21,35 @@ export default function App() {
     }, 2500);
     return () => clearInterval(interval);
   }, []);
+
+  const cakes = [
+    {
+      name: 'Cascading Greenery & Roses',
+      image: '/images/wedding/wedding-5tier-greenery-roses.jpg',
+      description: 'Grand 5-tier white wedding cake with fresh white roses',
+    },
+    {
+      name: 'Pink Butterfly Dreams',
+      image: 'images/birthday/birthday-butterfly-pink.jpg',
+      description: 'Two-tier white cake with pink butterflies and iridescent bubbles',
+    },
+    {
+      name: 'Cascading Pink Roses',
+      image: '/images/wedding/wedding-cascading-roses.jpg',
+      description: 'Four-tier blush wedding cake with cascading pink and cream roses',
+    },
+    
+  ];
+
+  const openModal = (name: string, description: string, imageUrl: string) => {
+    setSelectedCake({ name, description, imageUrl });
+    setModalOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalOpen(false);
+  };
+
 
   return (
     <div className="min-h-screen bg-[#FBF8F3]">
@@ -131,22 +165,22 @@ export default function App() {
             className="flex flex-col sm:flex-row items-center justify-center gap-5"
           >
             {/* Primary CTA - Glass Morphism */}
-            <a
-              href="#cakes"
-              className="group relative w-full sm:w-auto overflow-hidden"
+          <Link
+            to="/cakes" // This will point to the Cakes page
+            className="group relative w-full sm:w-auto overflow-hidden"
+          >
+            {/* Glow Effect */}
+            <div className="absolute -inset-1 bg-gradient-to-r from-[#D4A574] to-[#C4956A] rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-500" />
+            
+            {/* Button */}
+            <div 
+              className="relative px-10 py-5 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl text-white text-lg font-light tracking-wide hover:bg-white/15 transition-all duration-300 flex items-center justify-center gap-3"
+              style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              {/* Glow Effect */}
-              <div className="absolute -inset-1 bg-gradient-to-r from-[#D4A574] to-[#C4956A] rounded-2xl blur opacity-30 group-hover:opacity-50 transition duration-500" />
-              
-              {/* Button */}
-              <div 
-                className="relative px-10 py-5 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl text-white text-lg font-light tracking-wide hover:bg-white/15 transition-all duration-300 flex items-center justify-center gap-3"
-                style={{ fontFamily: "'Montserrat', sans-serif" }}
-              >
-                <span>View Our Cakes</span>
-                <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
-              </div>
-            </a>
+              <span>View Our Cakes</span>
+              <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
+            </div>
+          </Link>
 
             {/* Secondary CTA - Minimal Elegant */}
             <a
@@ -183,131 +217,92 @@ export default function App() {
       </section>
 
       {/* Featured Bakes Section */}
-      <section id="cakes" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#FBF8F3]">
-        <div className="max-w-7xl mx-auto">
-         
-          {/* Section Header */}
-          <div className="max-w-7xl mb-20 text-center lg:text-left">
-            <motion.div 
-              initial={{ opacity: 0, y: 30 }} 
-              animate={{ opacity: 1, y: 0 }} 
-              transition={{ duration: 1, delay: 0.2 }} 
-              className="flex flex-col lg:flex-row justify-between items-center lg:items-start"
-            >
-              {/* Title with elegant typography */}
-              <motion.h3 
-                className="text-6xl sm:text-7xl lg:text-8xl font-serif font-extrabold text-[#330E09] mb-8 lg:mb-0 leading-tight tracking-wider"
-                style={{ fontFamily: "'Didot', serif" }}
-              >
-                Signature Creations
-              </motion.h3>
+<section id="cakes" className="py-24 px-4 sm:px-6 lg:px-8 bg-[#FBF8F3]">
+  <div className="max-w-7xl mx-auto">
+    <div className="max-w-7xl mb-20 text-center lg:text-left">
+      <motion.div 
+        initial={{ opacity: 0, y: 30 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 1, delay: 0.2 }} 
+        className="flex flex-col lg:flex-row justify-between items-center lg:items-start"
+      >
+        <motion.h3 
+          className="text-6xl sm:text-7xl lg:text-8xl font-serif font-extrabold text-[#330E09] mb-8 lg:mb-0 leading-tight tracking-wider"
+          style={{ fontFamily: "'Didot', serif" }}
+        >
+          Signature Creations
+        </motion.h3>
+        <motion.p
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ duration: 1, delay: 0.4 }}
+          className="text-xl sm:text-2xl text-[#330E09] leading-relaxed font-light mx-auto lg:mx-0 max-w-3xl lg:w-2/3"
+          style={{ fontFamily: "'Didot', serif" }}
+        >
+          A curated selection of our most loved cakes and baked goods, handcrafted daily with care.
+        </motion.p>
+      </motion.div>
+      <div className="w-20 h-1 mx-auto lg:mx-0 mt-8 mb-8 bg-gradient-to-r from-[#D4A574] to-[#F4E4C1] rounded-full"></div>
+    </div>
 
-              {/* Text Description */}
-              <motion.p
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                transition={{ duration: 1, delay: 0.4 }}
-                className="text-xl sm:text-2xl text-[#330E09] leading-relaxed font-light mx-auto lg:mx-0 max-w-3xl lg:w-2/3"
-                style={{ fontFamily: "'Didot', serif" }}
-              >
-                A curated selection of our most loved cakes and baked goods, handcrafted daily with care.
-              </motion.p>
-            </motion.div>
-
-            {/* Decorative Line */}
-            <div className="w-20 h-1 mx-auto lg:mx-0 mt-8 mb-8 bg-gradient-to-r from-[#D4A574] to-[#F4E4C1] rounded-full"></div>
+    {/* Editorial Layout */}
+    <div className="space-y-8 lg:space-y-0">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
+        {/* Large Feature - Left (Hero Cake) */}
+        <div className="lg:col-span-7 group cursor-pointer" onClick={() => openModal(cakes[0].name, cakes[0].description, cakes[0].image)}>
+          <div className="relative overflow-hidden rounded-3xl shadow-xl h-[500px] lg:h-[700px]">
+            <ImageWithFallback
+              src={cakes[0].image}
+              alt={cakes[0].name}
+              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+            <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
+              <h4 className="text-3xl sm:text-4xl mb-2 text-[#C49E6C]">{cakes[0].name}</h4>
+              <p className="text-lg text-white/90">{cakes[0].description}</p>
+            </div>
           </div>
+        </div>
 
-
-          {/* Editorial Layout */}
-          <div className="space-y-8 lg:space-y-0">
-            {/* Mobile: Vertical Stack, Desktop: Asymmetric Grid */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 mb-8">
-              {/* Large Feature - Left (Hero Cake) */}
-              <div className="lg:col-span-7 group cursor-pointer">
-                <div className="relative overflow-hidden rounded-3xl shadow-xl h-[500px] lg:h-[700px]">
-                  <ImageWithFallback
-                    src="https://images.unsplash.com/photo-1607257882338-70f7dd2ae344?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjaG9jb2xhdGUlMjBjYWtlJTIwZGVzc2VydHxlbnwxfHx8fDE3Njg4OTY0Mzl8MA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                    alt="Artisan Chocolate Cake"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                  {/* Subtle gradient overlay for text readability */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                  
-                  {/* Caption overlay */}
-                  <div className="absolute bottom-0 left-0 right-0 p-8 text-white">
-                    <h4 className="text-3xl sm:text-4xl mb-2">
-                      Artisan Chocolate Cake
-                    </h4>
-                    <p className="text-lg text-white/90">
-                      Rich layers of premium Belgian chocolate
-                    </p>
-                  </div>
-                </div>
-              </div>
-
-              {/* Right Column - Stacked Items */}
-              <div className="lg:col-span-5 flex flex-col gap-8">
-                {/* Second Feature */}
-                <div className="group cursor-pointer">
-                  <div className="relative overflow-hidden rounded-3xl shadow-lg h-[400px] lg:h-[340px]">
-                    <ImageWithFallback
-                      src="https://images.unsplash.com/photo-1568471382005-99e347e2aef0?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxjcm9pc3NhbnRzJTIwYmFrZXJ5fGVufDF8fHx8MTc2ODkwNjQxNHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                      alt="Butter Croissants"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <h4 className="text-2xl mb-1">
-                        Butter Croissants
-                      </h4>
-                      <p className="text-white/90">
-                        Flaky perfection, every morning
-                      </p>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Third Feature */}
-                <div className="group cursor-pointer">
-                  <div className="relative overflow-hidden rounded-3xl shadow-lg h-[400px] lg:h-[340px]">
-                    <ImageWithFallback
-                      src="https://images.unsplash.com/photo-1565801776220-10bd41565980?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxhcnRpc2FuJTIwYnJlYWQlMjBsb2F2ZXN8ZW58MXx8fHwxNzY4ODYzMzU1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                      alt="Sourdough Bread"
-                      className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                    />
-                    <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
-                    <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
-                      <h4 className="text-2xl mb-1">
-                        Artisan Sourdough
-                      </h4>
-                      <p className="text-white/90">
-                        Traditional method, perfect crust
-                      </p>
-                    </div>
-                  </div>
+        {/* Right Column - Stacked Items */}
+        <div className="lg:col-span-5 flex flex-col gap-8">
+          {cakes.slice(1).map((cake, index) => (
+            <div key={index} className="group cursor-pointer" onClick={() => openModal(cake.name, cake.description, cake.image)}>
+              <div className="relative overflow-hidden rounded-3xl shadow-lg h-[400px] lg:h-[340px]">
+                <ImageWithFallback
+                  src={cake.image}
+                  alt={cake.name}
+                  className="w-full h-full object-contain group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-6 text-white">
+                  <h4 className="text-2xl mb-1 text-[#F7E7CE]">{cake.name}</h4>
+                  <p className="text-white/90">{cake.description}</p>
                 </div>
               </div>
             </div>
+          ))}
+        </div>
+      </div>
+    </div>
 
-            {/* Bottom Row - Wide Feature */}
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
-              <div className="lg:col-span-8 lg:col-start-3 group cursor-pointer">
-                <div className="relative overflow-hidden rounded-3xl shadow-lg h-[400px] lg:h-[450px]">
-                  <ImageWithFallback
-                    src="https://images.unsplash.com/photo-1698288280603-22997a335234?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxmcmVzaCUyMHBhc3RyaWVzJTIwYnJlYWR8ZW58MXx8fHwxNzY4OTIwMjYyfDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral"
-                    alt="Fresh Pastries Selection"
-                    className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  <div className="absolute bottom-0 left-0 right-0 p-8 text-white text-center">
-                    <h4 className="text-3xl sm:text-4xl mb-2">
-                      Daily Pastry Selection
-                    </h4>
-                    <p className="text-lg text-white/90">
-                      Fresh from our ovens to your table
-                    </p>
-                  </div>
+          {/* Bottom Row - Wide Feature */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
+            <div className="lg:col-span-8 lg:col-start-3 group cursor-pointer" onClick={() => openModal("Daily Pastry Selection", "Daily Pastry Selection, Fresh from our ovens to your table", "/images/Pastries/laziz-cream-roll.jpeg")}>
+              <div className="relative overflow-hidden rounded-3xl shadow-lg h-[400px] lg:h-[450px]">
+                <ImageWithFallback
+                  src="/images/Pastries/laziz-cream-roll.jpeg" 
+                  alt="Fresh Pastries Selection"
+                  className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
+                <div className="absolute bottom-0 left-0 right-0 p-8 text-white text-center">
+                  <h4 className="text-3xl sm:text-4xl mb-2 text-[#C49E6C]">
+                    Cream Roll
+                  </h4>
+                  <p className="text-lg text-white/90">
+                    Daily Pastry Selection, Fresh from our ovens to your table
+                  </p>
                 </div>
               </div>
             </div>
@@ -315,16 +310,26 @@ export default function App() {
 
           {/* CTA */}
           <div className="text-center mt-16">
-            <a
-              href="#cakes"
+            <Link
+              to="/cakes" // This will point to the Cakes page
               className="inline-flex items-center gap-2 px-10 py-4 bg-[#5D4E37] text-white text-lg rounded-full hover:bg-[#4A3D2A] transition-all shadow-lg hover:shadow-xl hover:scale-105"
             >
-              View Our Cakes
+              View All Our Cakes
               <ChevronRight className="w-5 h-5" />
-            </a>
+            </Link>
           </div>
         </div>
       </section>
+
+
+      {/* Modal Component */}
+      <Modal 
+        isOpen={modalOpen} 
+        closeModal={closeModal} 
+        cakeName={selectedCake.name} 
+        description={selectedCake.description} 
+        imageUrl={selectedCake.imageUrl} 
+      />
 
       {/* About Section */}
       <section id="about" className="py-20 px-4 sm:px-6 lg:px-8 bg-[#FBF8F3]">
@@ -357,13 +362,13 @@ export default function App() {
                   Our commitment is simple: fresh ingredients, traditional methods, and a warm welcome to every customer who walks through our doors.
                 </p>
               </div>
-              <a
-                href="#contact"
+              <Link
+                to="/about" // This will point to the About page
                 className="inline-flex items-center gap-2 text-[#D4A574] hover:text-[#C4956A] transition-colors text-lg"
               >
                 Learn More About Us
                 <ChevronRight className="w-5 h-5" />
-              </a>
+              </Link>
             </div>
           </div>
         </div>
