@@ -19,7 +19,7 @@ const Footer = () => {
               Laziz Bakery
             </h3>
             <p className="text-sm text-[#E6D8C5]/70 leading-relaxed max-w-sm">
-              Artisan cakes, pastries, and desserts crafted with care —
+              Artisan cakes, pastries, and desserts crafted with care, 
               where every celebration begins with something beautiful.
             </p>
           </div>

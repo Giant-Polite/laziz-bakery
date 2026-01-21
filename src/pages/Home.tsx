@@ -356,7 +356,7 @@ export default function App() {
                   Founded with passion and dedication, Laziz Bakery brings together the finest traditions of Middle Eastern and European baking. Every item is crafted by hand using time-honored techniques and premium ingredients.
                 </p>
                 <p>
-                  As a family-owned bakery, we take pride in creating more than just baked goods — we create memories. From our signature breads to our decadent desserts, every bite tells a story of quality, authenticity, and love.
+                  As a family-owned bakery, we take pride in creating more than just baked goods, we create memories. From our signature breads to our decadent desserts, every bite tells a story of quality, authenticity, and love.
                 </p>
                 <p>
                   Our commitment is simple: fresh ingredients, traditional methods, and a warm welcome to every customer who walks through our doors.
