@@ -55,7 +55,7 @@ export default function App() {
     <div className="min-h-screen bg-[#FBF8F3]">
 
       {/* Hero Section */}
-      <section id="home" className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden pt-10">
+      <section id="home" className="relative h-screen min-h-[700px] flex items-center justify-center overflow-hidden pt-20">
         {/* Layered Background Treatment */}
         <div className="absolute inset-0">
           {/* Base Image */}
