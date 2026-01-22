@@ -276,7 +276,7 @@ function ClosingCTA() {
             className="text-sm md:text-base tracking-[0.3em] uppercase text-[#C9A875]"
             style={{ fontFamily: "'Cinzel', serif", fontWeight: 400 }}
           >
-            Begin Your Journey
+            Elegance, Defined by Flour & Gold
           </span>
         </motion.div>
 
@@ -330,7 +330,7 @@ function ClosingCTA() {
             fontStyle: 'italic',
           }}
         >
-          Experience the Laziz Bakery Standard.
+          Experience the Union of Laziz Bakery and the Legendary Craft of Asal Cakes.
         </motion.p>
 
         {/* CTA Button */}

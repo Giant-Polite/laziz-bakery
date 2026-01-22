@@ -37,7 +37,7 @@ const Catering = () => {
           </motion.span>
           <h1 className="text-6xl md:text-8xl text-white italic font-serif mb-6">Our Services</h1>
           <p className="text-[#E8DDD0] italic font-serif text-xl max-w-2xl mx-auto">
-            "Every creation is orchestrated from scratch, utilizing only the world’s most premium ingredients."
+            Every creation is orchestrated from scratch, utilizing only the world’s most premium ingredients.
           </p>
         </motion.div>
       </motion.section>

@@ -241,7 +241,7 @@ export default function App() {
           className="text-xl sm:text-2xl text-[#330E09] leading-relaxed font-light mx-auto lg:mx-0 max-w-3xl lg:w-2/3"
           style={{ fontFamily: "'Didot', serif" }}
         >
-          A curated selection of our most loved cakes and baked goods, handcrafted daily with care.
+          A Curated Selection Of Our Most Loved Cakes and Baked Goods, Handcrafted Daily With Devotion.
         </motion.p>
       </motion.div>
       <div className="w-20 h-1 mx-auto lg:mx-0 mt-8 mb-8 bg-gradient-to-r from-[#D4A574] to-[#F4E4C1] rounded-full"></div>
