@@ -34,6 +34,7 @@ const Footer = () => {
                 { name: "Home", path: "/" },
                 { name: "Basir Azizi Cookies", path: "/cookies" },
                 { name: "Asal Cakes", path: "/cakes" },
+                { name: "Afghan Dried Fruits & Nuts", path: "/afghans" },
                 { name: "About", path: "/about" },
                 { name: "Catering", path: "/catering" },
               ].map((link) => (

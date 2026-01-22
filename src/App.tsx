@@ -10,6 +10,8 @@ import Cookies from "./pages/Cookies";
 import Catering from "./pages/Catering";
 import NotFound from "./pages/NotFound";
 import { useEffect } from "react";
+import Afghans from "./pages/Afghans";
+import AfghanBread from "./pages/Breads";
 
 const queryClient = new QueryClient();
 
@@ -33,6 +35,8 @@ const App = () => (
             <Route path="about" element={<About />} />
             <Route path="cakes" element={<Cakes />} />
             <Route path="cookies" element={<Cookies />} />
+            <Route path="afghans" element={<Afghans />} />
+            <Route path="breads" element={<AfghanBread />} />
             <Route path="catering" element={<Catering />} />
           </Route>
           <Route path="*" element={<NotFound />} />

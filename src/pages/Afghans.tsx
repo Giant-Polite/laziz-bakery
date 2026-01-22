@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { Phone, X, MapPin, Sparkles } from 'lucide-react';
-import { cookiesData } from '../data/cookiesData'; 
+import { afghansData } from '../data/afghansData'; 
 
 // --- ULTRA LUXURY HERO SECTION ---
 function Hero() {
@@ -15,8 +15,8 @@ function Hero() {
   const scale = useTransform(scrollYProgress, [0, 0.5], [1, 0.95]);
   const y = useTransform(scrollYProgress, [0, 0.5], [0, -50]);
 
-  const titleWords = ['Basir', 'Azizi', 'Cookies', 'and', 'Pastries'];
-  const subtitle = 'We are thrilled to bring the complete Basir Azizi Canada inventory to our discerning clientele.';
+  const titleWords = ['Afghan', 'Dried', 'Fruits', '&', 'Nuts'];
+  const subtitle = 'Experience the rare, sun-kissed Jewels of Afghanistan’s most ancient Valleys.';
 
   return (
     <motion.section
@@ -234,7 +234,7 @@ function ClosingCTA() {
             className="text-sm md:text-base tracking-[0.3em] uppercase text-[#C9A875]"
             style={{ fontFamily: "'Cinzel', serif", fontWeight: 400 }}
           >
-            Will You Be Part of the Basir Azizi Legacy?
+            From the Sun-Drenched Highlands
           </span>
         </motion.div>
 
@@ -251,7 +251,7 @@ function ClosingCTA() {
             lineHeight: '1.2',
           }}
         >
-          Canada's Most Loved Collection Has Arrived At Laziz Bakery
+          Is Your Palate Ready for Afghanistan’s Greatest Treasure?
         </motion.h2>
 
         {/* Decorative divider */}
@@ -288,7 +288,7 @@ function ClosingCTA() {
             fontStyle: 'italic',
           }}
         >
-          The Complete Canadian Inventory * Now Exclusively Ours
+          Sourced from the hidden orchards of the north, where the sun and soil create a flavor found nowhere else on earth.
         </motion.p>
 
         {/* CTA Button */}
@@ -363,19 +363,19 @@ function ClosingCTA() {
 }
 
 
-// --- Modall & PAGE ---
-const CookieModall = ({ cookie, onClose }: any) => {
-  if (!cookie) return null;
+// --- MODAL & PAGE ---
+const AfghanModala = ({ cake, onClose }: any) => {
+  if (!cake) return null;
   return (
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} exit={{ opacity: 0 }} onClick={onClose} className="absolute inset-0 bg-[#3D3027]/90 backdrop-blur-sm" />
       <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="relative w-full max-w-5xl bg-white flex flex-col md:flex-row shadow-2xl overflow-hidden max-h-[90vh]">
         <button onClick={onClose} className="absolute top-4 right-4 z-10 p-2 text-gray-400 hover:text-black"><X size={24}/></button>
-        <div className="w-full md:w-1/2 h-64 md:h-auto"><img src={cookie.image} className="w-full h-full object-cover" /></div>
+        <div className="w-full md:w-1/2 h-64 md:h-auto"><img src={cake.image} className="w-full h-full object-cover" /></div>
         <div className="w-full md:w-1/2 p-10 flex flex-col justify-center">
-          <span className="text-[10px] tracking-[0.5em] text-[#C9A875] mb-4 font-serif">{cookie.category}</span>
-          <h2 className="text-4xl italic font-serif mb-6 text-[#3D3027]">{cookie.name}</h2>
-          <p className="text-gray-500 italic text-xl mb-12 font-serif">{cookie.descriptor}</p>
+          <span className="text-[10px] tracking-[0.5em] text-[#C9A875] mb-4 font-serif">{cake.category}</span>
+          <h2 className="text-4xl italic font-serif mb-6 text-[#3D3027]">{cake.name}</h2>
+          <p className="text-gray-500 italic text-xl mb-12 font-serif">{cake.descriptor}</p>
           <div className="pt-8 border-t border-gray-100">
              <motion.a href="tel:+17036515000" className="w-full block py-4 bg-[#3D3027] text-white text-center uppercase text-[10px] tracking-[0.4em] font-serif hover:bg-[#C9A875] transition-colors">Inquire Now</motion.a>
           </div>
@@ -385,13 +385,13 @@ const CookieModall = ({ cookie, onClose }: any) => {
   );
 };
 
-const Cookies = () => {
+const Afghans = () => {
   const [activeCategory, setActiveCategory] = useState('all');
-  const [selectedcookie, setSelectedcookie] = useState<any>(null);
+  const [selectedAfghan, setSelectedAfghan] = useState<any>(null);
 
-  const displaycookies = (activeCategory === 'all' 
-    ? cookiesData.all 
-    : cookiesData.all.filter(cookie => cookie.category === activeCategory)
+  const displayAfghans = (activeCategory === 'all' 
+    ? afghansData.all 
+    : afghansData.all.filter(cake => cake.category === activeCategory)
   ).sort((a, b) => a.id - b.id);
 
   return (
@@ -399,22 +399,22 @@ const Cookies = () => {
       <Hero />
       <div className="max-w-7xl mx-auto px-6 py-24 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-16">
         <AnimatePresence mode="popLayout">
-          {displaycookies.map((cookie) => (
-            <motion.div layout key={cookie.id} onClick={() => setSelectedcookie(cookie)} className="group cursor-pointer">
+          {displayAfghans.map((cake) => (
+            <motion.div layout key={cake.id} onClick={() => setSelectedAfghan(cake)} className="group cursor-pointer">
               <div className="relative aspect-[4/5] overflow-hidden mb-6 bg-[#F9F6F2]">
-                <img src={cookie.image} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" />
+                <img src={cake.image} className="w-full h-full object-cover transition-transform duration-[2s] group-hover:scale-105" />
               </div>
-              <h3 className="text-2xl text-[#3D3027] italic font-serif text-center">{cookie.name}</h3>
+              <h3 className="text-2xl text-[#3D3027] italic font-serif text-center">{cake.name}</h3>
             </motion.div>
           ))}
         </AnimatePresence>
       </div>
       <ClosingCTA />
       <AnimatePresence>
-        {selectedcookie && <CookieModall cookie={selectedcookie} onClose={() => setSelectedcookie(null)} />}
+        {selectedAfghan && <AfghanModala cake={selectedAfghan} onClose={() => setSelectedAfghan(null)} />}
       </AnimatePresence>
     </div>
   );
 };
 
-export default Cookies;
+export default Afghans;
