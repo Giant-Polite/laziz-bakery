@@ -168,7 +168,7 @@ export default function App() {
           >
             {/* Primary CTA - Glass Morphism */}
           <Link
-            to="/cakes" // This will point to the Cakes page
+            to="/cookies" // This will point to the Cakes page
             className="group relative w-full sm:w-auto overflow-hidden"
           >
             {/* Glow Effect */}
@@ -179,7 +179,7 @@ export default function App() {
               className="relative px-10 py-5 bg-white/10 backdrop-blur-md border border-white/20 rounded-2xl text-white text-lg font-light tracking-wide hover:bg-white/15 transition-all duration-300 flex items-center justify-center gap-3"
               style={{ fontFamily: "'Montserrat', sans-serif" }}
             >
-              <span>View Our Cakes</span>
+              <span>View Our Cookies</span>
               <ChevronRight className="w-5 h-5 group-hover:translate-x-1 transition-transform duration-300" />
             </div>
           </Link>
@@ -313,10 +313,10 @@ export default function App() {
           {/* CTA */}
           <div className="text-center mt-16">
             <Link
-              to="/cakes" // This will point to the Cakes page
+              to="/cookies" // This will point to the Cakes page
               className="inline-flex items-center gap-2 px-10 py-4 bg-[#5D4E37] text-white text-lg rounded-full hover:bg-[#4A3D2A] transition-all shadow-lg hover:shadow-xl hover:scale-105"
             >
-              View All Our Cakes
+              View All Our Cookies
               <ChevronRight className="w-5 h-5" />
             </Link>
           </div>

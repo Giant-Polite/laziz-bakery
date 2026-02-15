@@ -9,7 +9,7 @@ const Navbar = () => {
   const navLinks = [
     { label: "Home", to: "/" },
     { label: "Basir Azizi Cookies", to: "/cookies" },
-    { label: "Asal Cakes", to: "/cakes" },
+    {/*{ label: "Asal Cakes", to: "/cakes" }*/},
     { label: "Afghan Bread", to: "/breads" },
     { label: "Afghan Fruits & Nuts", to: "/afghans" },
     { label: "About", to: "/about" },
