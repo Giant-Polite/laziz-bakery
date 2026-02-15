@@ -24,17 +24,17 @@ export default function App() {
 
   const cakes = [
     {
-      name: 'Pistachio Cake',
+      name: 'Basir Azizi Pistachio Cake',
       image: '/images/Pastries/Laziz4.jpeg',
       description: 'Our Basir Azizi Pistachio Cake is crafted using premium, hand-selected pistachios, ground to a fine crumb to ensure a moist, nutty texture in every bite.',
     },
     {
-      name: 'Khatai Cookie',
+      name: 'Basir Azizi Khatai Cookie',
       image: '/images/Pastries/Basir-Azizi-Khatai-Cookie.jpeg',
       description: 'The Basir Azizi Khatai isn’t just a cookie; it’s an experience. We’ve perfected the balance of light, airy crunch and buttery goodness.',
     },
     {
-      name: 'Afghan Charcuterie Board',
+      name: 'Basir Azizi Afghan Charcuterie Board',
       image: '/images/Pastries/afghan-charcuterie-board.jpeg',
       description: 'Perfectly curated for the modern palate, this board is naturally vegan-friendly, gluten-free, and stunningly colorful.',
     },
