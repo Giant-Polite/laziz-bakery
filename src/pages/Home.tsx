@@ -24,19 +24,19 @@ export default function App() {
 
   const cakes = [
     {
-      name: 'Cascading Greenery & Roses',
-      image: '/images/wedding/wedding-5tier-greenery-roses.jpg',
-      description: 'Grand 5-tier white wedding cake with fresh white roses',
+      name: 'Pistachio Cake',
+      image: '/images/Pastries/Laziz4.jpeg',
+      description: 'Our Basir Azizi Pistachio Cake is crafted using premium, hand-selected pistachios, ground to a fine crumb to ensure a moist, nutty texture in every bite.',
     },
     {
-      name: 'Pink Butterfly Dreams',
-      image: 'images/birthday/birthday-butterfly-pink.jpg',
-      description: 'Two-tier white cake with pink butterflies and iridescent bubbles',
+      name: 'Khatai Cookie',
+      image: '/images/Pastries/Basir-Azizi-Khatai-Cookie.jpeg',
+      description: 'The Basir Azizi Khatai isn’t just a cookie; it’s an experience. We’ve perfected the balance of light, airy crunch and buttery goodness.',
     },
     {
-      name: 'Cascading Pink Roses',
-      image: '/images/wedding/wedding-cascading-roses.jpg',
-      description: 'Four-tier blush wedding cake with cascading pink and cream roses',
+      name: 'Afghan Charcuterie Board',
+      image: '/images/Pastries/afghan-charcuterie-board.jpeg',
+      description: 'Perfectly curated for the modern palate, this board is naturally vegan-friendly, gluten-free, and stunningly colorful.',
     },
     
   ];
